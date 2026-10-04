@@ -26,14 +26,14 @@ Otherwise install it once for any agent: `uv tool install git+https://github.com
 | Need | Command |
 |---|---|
 | What games are installed, what engine, what anti-cheat, where saves live | `um scan --list`, `um scan "<game>"` |
-| Sprites, textures, PBR, 3D models, rigs, SFX, music, voice, video (fal) | `um fal <recipe>`, or the fal MCP (`search_models`, `run_model`) |
+| Sprites, images, 3D models, SFX, music, voice, video (pollinations) | `um polli <recipe>` |
 | Cut out / fit / pixelate / pack sprites; 3D model → sprite frames | `um sprite ...`, `um render3d ...` |
 | Launch, screenshot, click/type, record a Windows game (also from WSL) | `um win ...` |
 | Snapshot saves before touching them; undo | `um backup create/diff/restore` |
 | Cut a showcase video | `um video contact/compile/mux` |
 | Lint a mod before sharing (game files, decompiled code, secrets) | `um publish check` |
 
-Companion skills: **game-recon**, **reverse-engineering**, **fal-assets**, **asset-pipeline**,
+Companion skills: **game-recon**, **reverse-engineering**, **polli-assets**, **asset-pipeline**,
 **game-automation**, **showcase-video**, **mashup-mods**, **publish-mod**, **share-field-notes**.
 
 ## The loop
@@ -100,12 +100,12 @@ Take one item, unit or weapon all the way through with placeholder art. Define i
 appears and works, from the log plus a screenshot you actually look at. Only then widen. Commit each working
 step in the mod's own git repo.
 
-### 6. Assets (fal-assets and asset-pipeline skills)
+### 6. Assets (polli-assets and asset-pipeline skills)
 Study the game's own assets first: size, palette, outline, camera angle, facing, frame layout. Then generate
-with `um fal`. Every call is recorded in `fal_manifest.jsonl`. Convert with `um sprite` / `um render3d` into
-exactly what the engine loads.
+with `um polli`. Every call is recorded in `polli_manifest.jsonl`. Convert with `um sprite` / `um render3d`
+into exactly what the engine loads. Image + 3D are free-tier; audio/video are paid and need `--yes-spend`.
 - **Consistency across many angles and frames:** generate one concept, turn it into 3D
-  (`um fal model3d`), then render every heading from the game's camera (`um render3d --preset aoe2`).
+  (`um polli 3d`), then render every heading from the game's camera (`um render3d --preset aoe2`).
 - **Pixel-art games:** generate on a flat background or with transparency, cut out, then do one
   nearest-neighbour fit to the frame size.
 

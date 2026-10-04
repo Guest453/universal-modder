@@ -2,6 +2,13 @@
   <img src="docs/media/banner.png" alt="universal-modder" width="100%">
 </p>
 
+> **Fork note:** this fork replaces **fal** with **pollinations** (`gen.pollinations.ai`). Asset
+> generation is now `um polli <recipe>` (image, sprite, edit, 3d, rmbg, upscale, sfx, music, voice,
+> video), and the `fal-assets` skill is now `polli-assets`. Image + 3D run on the free tier; audio +
+> video bill the paid wallet and are gated behind `--yes-spend` / `--max-pollen`. The `um fal` CLI
+> group was removed (the module is kept only for the offline test suite). Key comes from
+> `POLLINATIONS_API_KEY` or the `pollinations` entry in the opencode `auth.json`.
+
 <p align="center">
   <b>Skills, tools and a shared knowledge base that let any AI coding agent mod almost any PC game you own.</b><br>
   Works with Claude Code, Codex, Cursor, Gemini CLI, GitHub Copilot, OpenCode, or anything that reads <code>AGENTS.md</code>.<br>

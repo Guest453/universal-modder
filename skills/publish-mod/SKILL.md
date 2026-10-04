@@ -36,7 +36,7 @@ is the platform's norm.
 - Credits:
   - the loader and libraries;
   - references you learned from;
-  - **"Art/audio generated with fal (fal.ai) using <models>"** (`fal_manifest.jsonl` lists them);
+  - **"Art/audio generated with pollinations (gen.pollinations.ai) using <models>"** (`polli_manifest.jsonl` lists them);
   - honest AI disclosure (which agent and model built it).
 - License for your code (MIT/Apache is common). Your assets' terms follow the models' licenses.
 
