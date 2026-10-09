@@ -4,8 +4,9 @@
       "type": "http",
       "url": "https://mcp.pollinations.ai",
       "headers": {
-        "Authorization": "Bearer ${POLLINATIONS_API_KEY}"
-      }
+        "Authorization": "Bearer ${POLLINATIONS_API_KEY:-}"
+      },
+      "headersHelper": "python3 bin/polli-mcp-headers.py || python bin/polli-mcp-headers.py"
     }
   }
 }

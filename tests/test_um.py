@@ -3,6 +3,7 @@
     uv run --with pytest pytest -q
 """
 import json
+import os
 import struct
 import subprocess
 import sys
@@ -192,6 +193,22 @@ def test_publish_check(tmp_path, capsys):
     out = capsys.readouterr().out
     assert "game file copied verbatim" in out and "FAL_KEY assignment" in out and "Ghidra auto-name" in out
     assert "decompiler header x1 in src/Mod.cs" in out and "README.md" not in out.split("decompiler header")[-1].split("\n")[0]
+
+
+def test_polli_mcp_headers(tmp_path):
+    # the Claude Code headersHelper: env key first, else the opencode auth.json (XDG_DATA_HOME points at a fake one)
+    helper = Path(__file__).resolve().parents[1] / "bin" / "polli-mcp-headers.py"
+    env = {k: v for k, v in os.environ.items() if k not in ("POLLINATIONS_API_KEY", "POLLINATIONS_KEY")}
+    env.update(XDG_DATA_HOME=str(tmp_path), APPDATA=str(tmp_path / "none"), LOCALAPPDATA=str(tmp_path / "none"))
+
+    def run(**extra):
+        return subprocess.run([sys.executable, str(helper)], capture_output=True, text=True, env={**env, **extra})
+
+    r = run()
+    assert r.returncode == 1 and r.stdout == "" and "no pollinations key" in r.stderr
+    make(tmp_path / "opencode", {"auth.json": json.dumps({"pollinations": {"type": "api", "key": "from-auth-json"}})})
+    assert json.loads(run().stdout) == {"Authorization": "Bearer from-auth-json"}
+    assert json.loads(run(POLLINATIONS_API_KEY="from-env").stdout) == {"Authorization": "Bearer from-env"}
 
 
 def test_publish_check_pollinations(tmp_path, capsys):

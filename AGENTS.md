@@ -27,7 +27,8 @@ repo, they almost always want to **mod a game**, or to learn how a game was modd
     - `publish`: pre-release lint
     - `kb`: the knowledge base
 - **pollinations MCP server:** `https://mcp.pollinations.ai` with header
-  `Authorization: Bearer $POLLINATIONS_API_KEY` (key from `https://enter.pollinations.ai/keys`).
+  `Authorization: Bearer $POLLINATIONS_API_KEY` (key from `https://enter.pollinations.ai/keys`). Claude Code
+  gets the header from `bin/polli-mcp-headers.py`, which also falls back to the opencode `auth.json`.
   - It's pre-configured per agent: `.mcp.json` (Claude Code), `.codex/config.toml` (Codex),
     `.cursor/mcp.json` (Cursor), `.vscode/mcp.json` (VS Code / Copilot), `gemini-extension.json`
     (Gemini CLI).

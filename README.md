@@ -8,7 +8,8 @@
 > video bill the paid wallet and are gated behind `--yes-spend` / `--max-pollen`. The `um fal` CLI
 > group was removed (the module is kept only for the offline test suite). Key comes from
 > `POLLINATIONS_API_KEY` or the `pollinations` entry in the opencode `auth.json`. The bundled MCP server
-> is pollinations' hosted `https://mcp.pollinations.ai` (bearer `POLLINATIONS_API_KEY`) instead of fal's.
+> is pollinations' hosted `https://mcp.pollinations.ai` instead of fal's; in Claude Code its key comes from
+> `bin/polli-mcp-headers.py` (same lookup as `um polli`, so the opencode `auth.json` is enough).
 
 <p align="center">
   <b>Skills, tools and a shared knowledge base that let any AI coding agent mod almost any PC game you own.</b><br>
