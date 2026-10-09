@@ -194,6 +194,21 @@ def test_publish_check(tmp_path, capsys):
     assert "decompiler header x1 in src/Mod.cs" in out and "README.md" not in out.split("decompiler header")[-1].split("\n")[0]
 
 
+def test_publish_check_pollinations(tmp_path, capsys):
+    # fixtures assembled at runtime so this file doesn't trip the toolkit's own publish check
+    make(tmp_path / "leak", {"README.md": "x", "a.js": "const k = '" + "sk" + "_" + "AbCdEf0123456789XyZ" + "';",
+                             "b.txt": "POLLINATIONS" + "_API_KEY=" + "abcdefghijklmnopqrstuvwxyz"})
+    assert publish.check(str(tmp_path / "leak")) == 1
+    out = capsys.readouterr().out
+    assert "pollinations key in a.js" in out and "POLLINATIONS_API_KEY assignment in b.txt" in out
+    make(tmp_path / "nocredit", {"README.md": "My mod", "assets/polli_manifest.jsonl": "{}\n"})
+    assert publish.check(str(tmp_path / "nocredit")) == 0
+    assert "pollinations-generated assets (polli_manifest.jsonl) but no credit line" in capsys.readouterr().out
+    make(tmp_path / "credit", {"README.md": "Art generated with pollinations.", "assets/polli_manifest.jsonl": "{}\n"})
+    assert publish.check(str(tmp_path / "credit")) == 0
+    assert "no credit line" not in capsys.readouterr().out
+
+
 # --------------------------------------------------------------------------- video
 
 @pytest.mark.skipif(subprocess.run(["which", "ffmpeg"], capture_output=True).returncode, reason="needs ffmpeg")

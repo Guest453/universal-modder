@@ -1,10 +1,10 @@
 {
   "mcpServers": {
-    "fal": {
+    "pollinations": {
       "type": "http",
-      "url": "https://mcp.fal.ai/mcp",
+      "url": "https://mcp.pollinations.ai",
       "headers": {
-        "Authorization": "Bearer ${FAL_KEY}"
+        "Authorization": "Bearer ${POLLINATIONS_API_KEY}"
       }
     }
   }

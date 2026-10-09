@@ -1,4 +1,4 @@
-# Codex: project-scoped MCP (trusted projects). fal's hosted MCP server, key from $FAL_KEY.
-[mcp_servers.fal]
-url = "https://mcp.fal.ai/mcp"
-bearer_token_env_var = "FAL_KEY"
+# Codex: project-scoped MCP (trusted projects). pollinations' hosted MCP server, key from $POLLINATIONS_API_KEY.
+[mcp_servers.pollinations]
+url = "https://mcp.pollinations.ai"
+bearer_token_env_var = "POLLINATIONS_API_KEY"

@@ -7,19 +7,20 @@
 > video), and the `fal-assets` skill is now `polli-assets`. Image + 3D run on the free tier; audio +
 > video bill the paid wallet and are gated behind `--yes-spend` / `--max-pollen`. The `um fal` CLI
 > group was removed (the module is kept only for the offline test suite). Key comes from
-> `POLLINATIONS_API_KEY` or the `pollinations` entry in the opencode `auth.json`.
+> `POLLINATIONS_API_KEY` or the `pollinations` entry in the opencode `auth.json`. The bundled MCP server
+> is pollinations' hosted `https://mcp.pollinations.ai` (bearer `POLLINATIONS_API_KEY`) instead of fal's.
 
 <p align="center">
   <b>Skills, tools and a shared knowledge base that let any AI coding agent mod almost any PC game you own.</b><br>
   Works with Claude Code, Codex, Cursor, Gemini CLI, GitHub Copilot, OpenCode, or anything that reads <code>AGENTS.md</code>.<br>
   The agent finds the game, works out the engine and the route, reads the real code, builds the mod, makes art, 3D and sound
-  with <a href="https://fal.ai">fal</a>, tests it in the running game, cuts the video, and writes down what it learned for the next agent.
+  with <a href="https://pollinations.ai">pollinations</a>, tests it in the running game, cuts the video, and writes down what it learned for the next agent.
 </p>
 
 <p align="center">
   <a href="#install"><img alt="any agent" src="https://img.shields.io/badge/agents-Claude%20Code%20·%20Codex%20·%20Cursor%20·%20Gemini%20·%20Copilot-B6FF3B?labelColor=0A0D12"></a>
   <a href="knowledge/INDEX.md"><img alt="knowledge base" src="https://img.shields.io/badge/knowledge%20base-field%20notes-B6FF3B?labelColor=0A0D12"></a>
-  <a href="https://fal.ai"><img alt="assets by fal" src="https://img.shields.io/badge/assets-fal-B6FF3B?labelColor=0A0D12"></a>
+  <a href="https://pollinations.ai"><img alt="assets by pollinations" src="https://img.shields.io/badge/assets-pollinations-B6FF3B?labelColor=0A0D12"></a>
   <a href="LICENSE"><img alt="MIT" src="https://img.shields.io/badge/license-MIT-B6FF3B?labelColor=0A0D12"></a>
 </p>
 
@@ -29,7 +30,7 @@
 
 ## Install
 
-Pick your agent. Each gets the same skills (Agent Skills format), the fal MCP server, and the `um` CLI.
+Pick your agent. Each gets the same skills (Agent Skills format), the pollinations MCP server, and the `um` CLI.
 
 | Agent | Install |
 |---|---|
@@ -50,16 +51,16 @@ Inside a clone, each agent finds the skills where it looks for them: `.agents/sk
 ```bash
 uv tool install git+https://github.com/rehan-remade/universal-modder     # or: pipx install git+...
 ```
-**For assets,** get a [fal API key](https://fal.ai/dashboard/keys). It powers both the fal MCP server and
-`um fal`:
+**For assets,** get a [pollinations API key](https://enter.pollinations.ai/keys) (`sk_...`). It powers both
+the pollinations MCP server and `um polli`:
 ```bash
-export FAL_KEY=...
+export POLLINATIONS_API_KEY=sk_...
 ```
 You also need Python 3.10+ and ffmpeg. `uv` is recommended. Blender is needed for 3D → sprite renders.
 Windows games are driven natively or from WSL.
 
 ## Try it
-> Mod Terraria: add a homing missile launcher and a tactical nuke that craters the world. Make the sprites with fal.
+> Mod Terraria: add a homing missile launcher and a tactical nuke that craters the world. Make the sprites with pollinations.
 
 > Make a new civilization for Age of Empires II with a unique unit rendered from 3D.
 
@@ -110,7 +111,7 @@ and an honest status and verification.
 | `mod-any-game` | The whole loop, hard safety rules, and **12 engine playbooks**: Unity, Unreal, .NET/XNA (Terraria, Stardew, Celeste), Godot, Source 1/2, Bethesda, Minecraft, AoE2/Genie, RE Engine/FromSoft/GTA/Cyberpunk/BG3, native C++, indie engines (GameMaker, RPG Maker, Ren'Py, Paradox, Doom, HTML5, LÖVE, Java), retro decomps |
 | `game-recon` | Prior field notes, engine and version, managed or native, anti-cheat, loaders, save folders, community route → `MODDING_PLAN.md` |
 | `reverse-engineering` | ILSpy / Cpp2IL / Vineflower / Ghidra and IDA over MCP / Cheat Engine / Frida / RenderDoc; reverse-engineer a file format and prove it with a round trip |
-| `fal-assets` | Sprites with real transparency, consistent variants, pixel art, seamless textures, PBR maps, image-to-3D, auto-rigging, SFX, music, voice, cutscene video |
+| `polli-assets` | Sprites and images, consistent variants and frames, background removal, upscaling, image-to-3D, SFX, music, voice, cutscene video (audio + video gated behind `--yes-spend`) |
 | `asset-pipeline` | Art → engine-exact frames: cutout, nearest-neighbour fit, palettes, sheets, team-colour masks, 3D → 8/16-heading sprites |
 | `game-automation` | Launch, screenshot (GPU-safe), click/type safely, windowed mode, crash-reporter cleanup, in-game agent bridges |
 | `showcase-video` | Record the window with only the game's audio, pick moments, cut a styled video from an EDL |
@@ -123,7 +124,7 @@ and an honest status and verification.
 | | |
 |---|---|
 | `um scan` | Find Steam/Epic/Xbox installs; fingerprint engine and version, .NET vs native, anti-cheat, installed loaders, save folders, ranked routes |
-| `um fal` | `sprite`, `image`, `edit`, `rmbg`, `pixelate`, `upscale`, `texture`, `pbr`, `model3d`, `rig`, `sfx`, `music`, `voice`, `video`, `run`, `search`, `schema`, `price`. Plain REST, with a manifest of every generation |
+| `um polli` | `image`, `sprite`, `edit`, `3d`, `rmbg`, `upscale`, `sfx`, `music`, `voice`, `video`, `balance`, `models`. Plain REST, with a manifest of every generation |
 | `um sprite` | `cutout`, `fit`, `pixelate`, `palette`, `sheet`, `slice`, `frames`, `team-mask`, `seamless`, `preview` |
 | `um render3d` | GLB → sprite frames from the game's camera (`aoe2`, `iso8`, `trueiso`, `topdown`, `side`, `turntable`) with Blender |
 | `um win` | `shot`, `record` (gfxcapture + process-loopback audio), `drive` (input that only reaches the game), `ps`, `kill`, `launch`, `reg` |

@@ -1,6 +1,6 @@
 ---
 name: mod-any-game
-description: Mod a PC game the user owns, taking an idea to working in the real game and recorded. It covers new items, weapons, enemies, bosses, units, civilizations, mechanics, art, sound, VR and cross-game mashups. Use when the user wants to mod, extend, hack on, reverse engineer or mash up a game ("add a nuke to Terraria", "make a new civ for Age of Empires", "put Minecraft inside X", "can I mod this game?"). It covers recon (engine, loaders, anti-cheat), choosing the route, a safe lab, a first vertical slice, fal-generated assets, in-game verification and a showcase clip.
+description: Mod a PC game the user owns, taking an idea to working in the real game and recorded. It covers new items, weapons, enemies, bosses, units, civilizations, mechanics, art, sound, VR and cross-game mashups. Use when the user wants to mod, extend, hack on, reverse engineer or mash up a game ("add a nuke to Terraria", "make a new civ for Age of Empires", "put Minecraft inside X", "can I mod this game?"). It covers recon (engine, loaders, anti-cheat), choosing the route, a safe lab, a first vertical slice, pollinations-generated assets, in-game verification and a showcase clip.
 ---
 
 # Mod any game
@@ -135,7 +135,7 @@ Choose moments from a contact sheet, then cut 20-45 s with one-line titles and a
 
 ### 9. Package and publish (the publish-mod skill)
 Run `um publish check <mod> --game "<install>"`. Write a README with install steps. Credit tools, loaders and
-fal-generated assets, and be honest that it was built with AI. Ship no game files.
+pollinations-generated assets, and be honest that it was built with AI. Ship no game files.
 
 ### 10. Leave a field note (the share-field-notes skill)
 Turn `MODLOG.md` into a knowledge-base note (`um kb new ...`, then `um kb check`). Cover:

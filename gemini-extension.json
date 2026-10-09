@@ -1,21 +1,21 @@
 {
   "name": "universal-modder",
   "version": "0.2.0",
-  "description": "Mod almost any game you own with an AI agent: engine recon, reverse engineering, fal-generated art/3D/audio, in-game testing, showcase videos, and a shared knowledge base of how games were modded.",
+  "description": "Mod almost any game you own with an AI agent: engine recon, reverse engineering, pollinations-generated art/3D/audio, in-game testing, showcase videos, and a shared knowledge base of how games were modded.",
   "contextFileName": "AGENTS.md",
   "mcpServers": {
-    "fal": {
-      "httpUrl": "https://mcp.fal.ai/mcp",
+    "pollinations": {
+      "httpUrl": "https://mcp.pollinations.ai",
       "headers": {
-        "Authorization": "Bearer ${FAL_KEY}"
+        "Authorization": "Bearer ${POLLINATIONS_API_KEY}"
       }
     }
   },
   "settings": [
     {
-      "name": "fal API key",
-      "description": "Key for fal (https://fal.ai/dashboard/keys): assets via the MCP server and `um fal`.",
-      "envVar": "FAL_KEY",
+      "name": "pollinations API key",
+      "description": "Key for pollinations (https://enter.pollinations.ai/keys): assets via the MCP server and `um polli`.",
+      "envVar": "POLLINATIONS_API_KEY",
       "sensitive": true
     }
   ]

@@ -24,6 +24,11 @@ wallet**, so they are OFF by default and need an explicit `--yes-spend` plus a `
 - **Anything that must land on disk** (every game asset): `um polli <recipe>`. It uploads local inputs where
   the API needs a URL, downloads the output and appends the model, prompt, seed and file to
   `<out>/polli_manifest.jsonl`, so every asset can be traced and regenerated.
+- **MCP** (`https://mcp.pollinations.ai`, header `Authorization: Bearer $POLLINATIONS_API_KEY`; pre-configured
+  in this repo's `.mcp.json` and the other agents' configs): good for quick looks and discovery
+  (`listModels`, `getModelStatus`, `getBalance`) and one-off drafts. Its media tools return hosted links on
+  `media.pollinations.ai` (unlisted, kept 30 days) and write nothing to disk or the manifest, so re-run the
+  keeper with `um polli` before it goes into a mod.
 - Free image processing (`rmbg`, `upscale`) needs no pollen and no key at all.
 
 ## Recipes (`um polli <recipe> --help` for options; `--model` overrides the model; `--set k=v` passes extras)
